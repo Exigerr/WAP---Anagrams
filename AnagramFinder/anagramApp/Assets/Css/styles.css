@@ -1,0 +1,197 @@
+﻿* {
+    margin:0;
+    padding:0;
+}
+/* -----------------------------------------------*/
+/* GENERIC ELEMENTS */
+/* -----------------------------------------------*/
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight:bold;
+    text-transform: capitalize;
+}
+
+p {
+    font-family: Tahoma, Geneva, sans-serif
+}
+
+/* -----------------------------------------------*/
+/* SHARED COMMON */
+/* -----------------------------------------------*/
+
+.clear:after {
+    content: "."; 
+    height: 0; 
+    display: block; 
+    visibility: hidden; 
+    clear: both;
+}
+
+.margin10 {
+    margin-bottom: 10px;
+}
+
+.margin20 {
+    margin-bottom: 20px;
+}
+
+.margin30 {
+    margin-bottom: 30px;
+}
+
+.margin40 {
+    margin-bottom: 40px;
+}
+
+.margin50 {
+    margin-bottom: 50px;
+}
+
+.textCentre {
+    text-align: center;
+}
+
+.lighter {
+    font-weight: 100;
+}
+
+.normal {
+    font-size: 0.8em;
+}
+.verticalCentre {
+    display: table;
+}
+
+.verticalCentreElem {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+
+/* -----------------------------------------------*/
+/* LAYOUT */
+/* -----------------------------------------------*/
+body {
+    background-color:#ecf0f1;
+}
+
+#wrapper {
+    min-width:780px;
+}
+
+/* -----------------------------------------------*/
+/* LAYOUT -> HEADER */
+/* -----------------------------------------------*/
+#headerWrapper {
+    width:100%;
+    background-color: #2ea2cc;
+}
+
+#skip {
+    position:absolute;
+    top:0;
+    left:-1000px;
+}
+
+#skip:focus{
+    left:0;
+}
+
+
+/* -----------------------------------------------*/
+/* LAYOUT -> HEADER -> LOGO */
+/* -----------------------------------------------*/
+#websiteTitle {
+    position:relative;
+    top:0;
+    bottom:0;
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    font-size:1.8em;
+    font-weight:bold;
+    text-transform: capitalize;
+    text-decoration: none;
+}
+
+#logo {
+    min-height:60px;
+    float:left;
+}
+
+/* -----------------------------------------------*/
+/* LAYOUT -> HEADER -> NAVIGATION */
+/* -----------------------------------------------*/
+#headerWrapper nav {
+    float:right;
+}
+
+#headerWrapper nav ul {
+    list-style:none;
+}
+
+#topHeader, main, #pageFooter {
+    width:80%;
+    min-width:780px;
+    max-width:1200px;
+    margin:0 auto;
+}
+
+main {
+    margin-top:50px;
+}
+
+
+/* -----------------------------------------------*/
+/* FOOTER  */
+/* -----------------------------------------------*/
+#pageFooter {
+    margin: 40px auto;
+}
+.copyright {
+    font-size:0.8em;
+    color: #999;
+    text-align: center;
+}
+
+
+/* -----------------------------------------------*/
+/* FORM STYLING  */
+/* -----------------------------------------------*/
+.modernFields {
+    width: 100%;
+}
+
+.modernFields input {
+    width: 85%;
+    padding: 22px;
+    margin: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: solid 2px #fff;
+    outline: none;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    -webkit-transition: .05s border-color ease-in-out, .05s background-color ease-in-out;
+    transition: .05s border-color ease-in-out, .05s background-color ease-in-out;
+}
+
+.modernFields input:focus, .modernFields input:active {
+    border-bottom-color: #2ea2cc;
+}
+
+.modernFields input[type=submit] {
+    width: 15%;
+    position: relative;
+    padding:22px;
+    background-color: #2ea2cc;
+    border-bottom-color: #2ea2cc;
+    color: #fff;
+}
+
+.modernFields input[type=submit]:focus, .modernFields input[type=submit]:active {
+    background-color: #2ecc71;
+    border-bottom-color: #2ecc71;
+}
