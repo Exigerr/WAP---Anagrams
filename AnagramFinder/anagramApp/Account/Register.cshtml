@@ -1,0 +1,51 @@
+﻿@using anagramApp.Classes
+
+@{
+    if (WebSecurity.IsAuthenticated){
+        Response.Redirect("~");
+    }
+    Page.Title = "Register an account";
+
+    if (IsPost) {
+        Validate validation = new Validate();
+        Validators valid = new Validators();
+        validation.AddField("firstname", "A valid name is required", valid.IsName(Request["firstname"], true));
+        validation.AddField("lastname", "A valid name is required", valid.IsName(Request["lastname"], true));
+        validation.AddField("email", "A valid email address is required", valid.IsEmail(Request["email"], true));
+        validation.AddField("password", "Password must be under 25 Characters and only contain letters,-,+,_, or numbers", valid.IsPassword(Request["password"], true));
+        
+        //Checks that all input is valid, else sets error messages
+        if (validation.AllValid()) {
+            UserHelper user = new UserHelper();
+            if (user.CreateUser(Request["email"], Request["password"], Request["firstname"], Request["lastname"])) {
+                Response.Redirect("~");
+            }
+            else {
+                ModelState.AddError("email", "An account with that email already exists");
+            }
+        }
+        else {
+            validation.DisplayErrors(ModelState.AddError);   
+        }
+        
+    }
+}
+<section class="mediumBox centreBox">
+    <h1 class="margin20">Create an account!</h1>
+    <form method="post" action="" role="form" class="modernFields centreBox">
+        <label for="firstname" class="hidden">Firstname:</label>
+        @Html.ValidationMessage("firstname")
+        <input type="text" name="firstname" id="firstname" placeholder="Firstname: Fred" value="@Request["firstname"]" role="textbox" class="margin20" />
+        <label for="lastname" class="hidden">Lastname</label>
+        @Html.ValidationMessage("lastname")
+        <input type="text" name="lastname" id="lastname" placeholder="Lastname: Bloggs" value="@Request["lastname"]" role="textbox" class="margin20" />
+        <label for="Email" class="hidden">Your Email:</label>
+        @Html.ValidationMessage("email")
+        <input type="text" name="email" id="email" placeholder="Email: fredbloggs@amazingMail.com" value="@Request["email"]" role="textbox" class="margin20" />
+        <label for="password" class="hidden">Your Password:</label>
+        @Html.ValidationMessage("password")
+        <input type="password" name="password" id="password" placeholder="Password: Password-+_123" value="" role="textbox" class="margin20" />
+        <label for="register" class="hidden">Register an account:</label>
+        <input type="submit" name="register" id="register" value="Register" role="button" class="fullWidth">
+    </form>
+</section>

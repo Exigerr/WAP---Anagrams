@@ -12,8 +12,12 @@ h1, h2, h3, h4, h5, h6 {
     text-transform: capitalize;
 }
 
-p {
-    font-family: Tahoma, Geneva, sans-serif
+p, a, form {
+    font-family: Tahoma, Geneva, sans-serif;
+}
+
+a {
+    color: #3498db;
 }
 
 /* -----------------------------------------------*/
@@ -27,6 +31,22 @@ p {
     visibility: hidden; 
     clear: both;
 }
+
+.hidden {
+    height: 0px;
+	width: 0px;
+    position:absolute;
+	overflow: hidden;
+}
+
+.centreBox {
+    margin: 0 auto;
+}
+
+.mediumBox {
+    width:60%;
+}
+
 
 .margin10 {
     margin-bottom: 10px;
@@ -67,7 +87,6 @@ p {
     display: table-cell;
     vertical-align: middle;
 }
-
 
 /* -----------------------------------------------*/
 /* LAYOUT */
@@ -123,11 +142,25 @@ body {
 /* LAYOUT -> HEADER -> NAVIGATION */
 /* -----------------------------------------------*/
 #headerWrapper nav {
+    min-height:60px;
     float:right;
 }
 
 #headerWrapper nav ul {
     list-style:none;
+}
+
+#topHeader nav ul li {
+    display:inline-block;
+}
+#topHeader nav ul li:first-child {
+    margin-right:10px;
+}
+#topHeader nav a {
+    font-weight: bold;
+    color: #FFF;
+    text-decoration: none;
+    font-family: 'Open Sans', sans-serif;
 }
 
 #topHeader, main, #pageFooter {
@@ -163,9 +196,8 @@ main {
 }
 
 .modernFields input {
-    width: 85%;
+    width: 100%;
     padding: 22px;
-    margin: 0;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -178,20 +210,36 @@ main {
     transition: .05s border-color ease-in-out, .05s background-color ease-in-out;
 }
 
+.modernFields.split input {
+    width: 85%;
+}
+
 .modernFields input:focus, .modernFields input:active {
     border-bottom-color: #2ea2cc;
 }
 
 .modernFields input[type=submit] {
-    width: 15%;
-    position: relative;
     padding:22px;
     background-color: #2ea2cc;
     border-bottom-color: #2ea2cc;
     color: #fff;
 }
 
+.modernFields.split .smallSubmit {
+    width: 15%;
+    position: relative;
+    padding:22px;
+}
+
 .modernFields input[type=submit]:focus, .modernFields input[type=submit]:active {
     background-color: #2ecc71;
     border-bottom-color: #2ecc71;
+}
+
+.field-validation-error {
+    display: block;
+    border-bottom: 2px solid #e74c3c;
+    font-weight: bold;
+    font-size: 0.9em;
+    color: #7f8c8d;
 }

@@ -1,0 +1,56 @@
+﻿@using anagramApp.Classes
+
+@{
+    if (WebSecurity.IsAuthenticated) {
+        Response.Redirect("~");
+    }
+    
+    Page.Title = "Login to FinderGram";
+
+    if (IsPost) {
+        Validate validation = new Validate();
+        Validators valid = new Validators();
+        validation.AddField("email", "A valid email address is required", valid.IsEmail(Request["email"], true));
+        validation.AddField("password", "Password must be under 25 Characters and only contain letters,-,+,_, or numbers", valid.IsPassword(Request["password"], true));
+        
+        if (validation.AllValid()) {
+            UserHelper user = new UserHelper();
+            //Uses UserHelper instead of manually writing out WebSecurity.login. This allows extra logic to be done if necessary.
+            if (user.Login(Request["email"], Request["password"])) {
+                Redirector redirector = new Redirector(Context);
+                redirector.Go();
+            }
+        }
+        else {
+            validation.DisplayErrors(ModelState.AddError);
+        }
+    }
+}
+
+@functions {
+    String getMsg() {
+        String msg = "Account Login";
+        if (Request.Params["ReturnUrl"] != null) {
+            msg +=": You must be logged in to use FinderGram!";
+        }
+
+        return msg;
+    }
+}
+<section class="mediumBox centreBox margin20">
+    <h1 class="margin20">@getMsg()</h1>
+    <form method="post" action="" role="form" class="modernFields">
+        <label for="email" class="hidden">Your Email:</label>
+        @Html.ValidationMessage("email")
+        <input type="text" name="email" id="email" placeholder="Email: e.g. fred@bloggs.com" value="" role="textbox" class="margin20" />
+        <label for="password" class="hidden">Your Password:</label>
+        @Html.ValidationMessage("password")
+        <input type="password" name="password" id="password" placeholder="Password: e.g. Password123" value="" role="textbox" class="margin20" />
+        <label for="login" class="hidden">Log into FinderGram:</label>
+        <input type="submit" name="login" id="login" value="Login" role="button">
+    </form>
+</section>
+<section class="mediumBox centreBox">
+    <h2>Don't have an account?</h2>
+    <a href="Register" title="Register an account" role="link">Click here to create one!</a>
+</section>

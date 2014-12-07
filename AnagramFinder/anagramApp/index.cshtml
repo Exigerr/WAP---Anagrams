@@ -1,5 +1,13 @@
-﻿<h1 class="textCentre margin20">The Anagram Finder</h1>
-<form class="modernFields">
-    <input type="text" name="userAnagram" id="userAnagram" placeholder="Enter Anagram Seach" value="" role="textbox" /><!--
- --><input type="submit" name="submit" id="search" value="Search" role="button">
-</form>
+﻿@using WebMatrix.Data;
+ 
+@{
+    WebSecurity.RequireAuthenticatedUser();
+}
+<section>
+    <h1 class="textCentre margin20">The Anagram Finder</h1>
+    <form class="modernFields split" role="form">
+        <label for="userAnagram" class="hidden">Enter an Anagram:</label>
+        <input type="text" name="userAnagram" id="userAnagram" placeholder="Enter Anagram Seach" value="" role="textbox" /><!--
+        --><label for="search" class="hidden">Submit Search:</label><input type="submit" name="submit" id="search" value="Search" role="button" class="smallSubmit">
+    </form>
+</section>

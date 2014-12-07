@@ -1,0 +1,12 @@
+﻿@helper UserMenu() {
+    if (WebSecurity.IsAuthenticated) {
+        <ul class="verticalCentreElem">
+            <li>
+                <a href="~" title="View your account info" role="link">Account</a>
+            </li>
+            <li>
+                <a href="~/Account/Logout" title="Logout of your Account" role="link">Logout</a>
+            </li>
+        </ul>
+    }
+}
