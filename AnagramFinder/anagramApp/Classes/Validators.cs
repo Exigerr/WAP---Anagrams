@@ -13,7 +13,7 @@ namespace anagramApp.Classes {
 
         //Check that Input value is empty and not required, therefore no need to check other validation
         private bool EmptyAndRequired(string value, bool required) {
-            if (!this.NotEmpty(value) && required == false) {
+            if (!NotEmpty(value) && required == false) {
                 return true;
             }
             return false;

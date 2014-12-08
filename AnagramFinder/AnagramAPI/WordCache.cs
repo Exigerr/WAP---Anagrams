@@ -8,5 +8,8 @@ namespace AnagramAPI
 {
     class WordCache
     {
+        public void UpdateList(){
+
+        }
     }
 }

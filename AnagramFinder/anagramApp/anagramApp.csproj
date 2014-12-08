@@ -120,6 +120,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\AnagramDbHandler.cs" />
     <Compile Include="Classes\Redirector.cs" />
     <Compile Include="Classes\UserHelper.cs" />
     <Compile Include="Classes\Field.cs" />
@@ -130,6 +131,7 @@
   <ItemGroup>
     <Folder Include="Assets\Media\" />
     <Folder Include="Assets\Scripts\" />
+    <Folder Include="Assets\Words\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
