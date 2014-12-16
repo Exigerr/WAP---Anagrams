@@ -21,7 +21,7 @@ namespace AnagramAPI
         }
 
         public List<string> GetWord(string word, Action<string> Callback = null) {
-            _wordList.TryGetValue(Alphabetise(word), out _results);
+            _wordList.TryGetValue(Alphabetise(word).ToLower(), out _results);
 
             if(Callback != null){
                 Callback.Invoke(word);

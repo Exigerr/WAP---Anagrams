@@ -21,7 +21,7 @@ namespace AnagramAPI
                 string line;
 
                 while ((line = file.ReadLine()) != null) {
-                    string key = Alphabetise(line);
+                    string key = Alphabetise(line).ToLower();
                     List<string> value;
 
                     //Check if key already exists

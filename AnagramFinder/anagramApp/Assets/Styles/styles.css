@@ -23,6 +23,9 @@ a {
 /* -----------------------------------------------*/
 /* SHARED COMMON */
 /* -----------------------------------------------*/
+.alert {
+    color: #f00;
+}
 
 .clear:after {
     content: "."; 
@@ -41,6 +44,11 @@ a {
 
 .centreBox {
     margin: 0 auto;
+}
+
+.whiteBox {
+    padding:22px;
+    background:#fff;
 }
 
 .mediumBox {
@@ -79,6 +87,11 @@ a {
 .normal {
     font-size: 0.8em;
 }
+
+.mediumP {
+    font-size:1.2em;
+}
+
 .verticalCentre {
     display: table;
 }
@@ -242,4 +255,20 @@ main {
     font-weight: bold;
     font-size: 0.9em;
     color: #7f8c8d;
+}
+
+.modernFields.split input:-webkit-autofill {
+    box-shadow: 0 0 0 50px #E5FFFA inset;
+}
+
+/* -----------------------------------------------*/
+/* Word Output  */
+/* -----------------------------------------------*/
+.wordList {
+    list-style:square;
+    -moz-column-count:5;
+    -webkit-column-count:5;
+    column-count:5;
+    list-style-position:inside;
+    font-size:1.5em;
 }

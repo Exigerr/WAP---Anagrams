@@ -9,7 +9,11 @@ using WebMatrix.WebData;
 namespace anagramApp.Classes {
     public class CurrentUser
     {
-        private Database _db;
+        private string _db;
+
+        public CurrentUser(string dbName = "db_anagram") {
+            _db = dbName;
+        }
 
         public bool CreateUser(string email, string password, string userFirstname, string userLastname) {
             var user = new { firstname = userFirstname, lastname = userLastname };
@@ -30,8 +34,9 @@ namespace anagramApp.Classes {
         }
 
         public void AddUserSearch(string userSearch) {
-            string updateQuery = "INSERT INTO UserSearches (userId, word, timestamp) VALUES (@param0, @param1, GETUTCDATE())";
-            _db.Execute(updateQuery, WebSecurity.CurrentUserId, userSearch);
+            var db = Database.Open(_db);
+            string updateQuery = "INSERT INTO UserSearches (userId, word, timestamp) VALUES (@0, @1, GETUTCDATE())";
+            db.Execute(updateQuery, WebSecurity.CurrentUserId, userSearch);
         }
 
     }

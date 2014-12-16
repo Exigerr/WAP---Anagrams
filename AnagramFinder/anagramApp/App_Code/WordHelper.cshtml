@@ -9,9 +9,15 @@
 }
 
 @helper OutputWords(List<string> wordList) {
-    <ul>
-    @foreach(var item in wordList){
-          <li>@item</li>
+    if (wordList == null) {
+        <p class="mediumP alert">No words found matching your search!</p>
     }
-    </ul>
+    else {
+        <ul class="wordList">
+            @foreach (var item in wordList) {
+                <li>@item</li>
+            }
+        </ul>
+    }
+    
 }
