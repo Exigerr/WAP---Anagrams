@@ -1,0 +1,17 @@
+﻿@using AnagramAPI;
+
+@functions {
+    public static void GetAndStoreList(string file = "/Assets/Words/wordlist.txt") {
+        //Gets list of words from the reader and stores it in web cache for quick access
+        WordReader reader = new WordReader(HttpContext.Current.Server.MapPath(file));
+        WebCache.Set("wordList", reader.GetList(new Dictionary<string, List<string>>()), 525600);
+    }
+}
+
+@helper OutputWords(List<string> wordList) {
+    <ul>
+    @foreach(var item in wordList){
+          <li>@item</li>
+    }
+    </ul>
+}

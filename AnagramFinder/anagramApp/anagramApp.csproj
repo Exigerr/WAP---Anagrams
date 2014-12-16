@@ -96,6 +96,7 @@
     <Content Include="App_Data\db_anagram_log.ldf">
       <DependentUpon>db_anagram.mdf</DependentUpon>
     </Content>
+    <Content Include="Assets\Words\wordlist.txt" />
     <Content Include="packages.config" />
     <Content Include="Shared\layout.cshtml" />
     <Content Include="index.cshtml" />
@@ -105,6 +106,7 @@
     <Content Include="Shared\footer.cshtml" />
     <Content Include="App_Code\General.cshtml" />
     <Content Include="Account\Logout.cshtml" />
+    <Content Include="App_Code\WordHelper.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -116,13 +118,13 @@
     <Content Include="_AppStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\Css\styles.css" />
+    <Content Include="Assets\Styles\styles.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\AnagramDbHandler.cs" />
     <Compile Include="Classes\Redirector.cs" />
-    <Compile Include="Classes\UserHelper.cs" />
+    <Compile Include="Classes\CurrentUser.cs" />
     <Compile Include="Classes\Field.cs" />
     <Compile Include="Classes\Validate.cs" />
     <Compile Include="Classes\Validators.cs" />
@@ -131,7 +133,12 @@
   <ItemGroup>
     <Folder Include="Assets\Media\" />
     <Folder Include="Assets\Scripts\" />
-    <Folder Include="Assets\Words\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AnagramAPI\AnagramAPI.csproj">
+      <Project>{14663a7c-4b84-4624-ad69-2f7a99c642bd}</Project>
+      <Name>AnagramAPI</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

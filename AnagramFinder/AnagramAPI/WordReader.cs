@@ -7,7 +7,7 @@ using System.IO;
 
 namespace AnagramAPI
 {
-    public class WordReader {
+    public class WordReader : Words {
         private string _filename;
 
         public WordReader(string filename) {
@@ -29,6 +29,7 @@ namespace AnagramAPI
                         value.Add(line);
                     }
                     else {
+                        value = new List<string>();
                         value.Add(line);
                         sortedList.Add(key, value);
                     }
@@ -37,13 +38,6 @@ namespace AnagramAPI
             }
 
             return sortedList;
-        }
-
-        public string Alphabetise(string word) {
-            //Converts string to array, allowing usage of the sort function - automatically re-arranging it into aplhabetical order
-            char[] a = word.ToCharArray();
-            Array.Sort(a);
-            return new string(a);
         }
 
     }

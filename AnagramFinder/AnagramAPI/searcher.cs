@@ -6,7 +6,29 @@ using System.Threading.Tasks;
 
 namespace AnagramAPI
 {
-    class Searcher{
+    public class Searcher : Words {
+
+        private Dictionary<string, List<string>> _wordList;
+        private List<string> _results = null;
+
+        public Boolean SetList (Dictionary<string, List<string>> list) {
+            if (list == null) {
+                return false;
+            }
+
+            _wordList = list;
+            return true;
+        }
+
+        public List<string> GetWord(string word, Action<string> Callback = null) {
+            _wordList.TryGetValue(Alphabetise(word), out _results);
+
+            if(Callback != null){
+                Callback.Invoke(word);
+            }
+
+            return _results;
+        }
 
     }
 }

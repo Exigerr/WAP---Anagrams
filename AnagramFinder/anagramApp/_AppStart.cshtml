@@ -1,3 +1,8 @@
 ﻿@{
+    System.Diagnostics.Debug.WriteLine("--------------------------------------------------------------------------------");
+    System.Diagnostics.Debug.WriteLine("   STARTING   ");
+    System.Diagnostics.Debug.WriteLine("--------------------------------------------------------------------------------");
     WebSecurity.InitializeDatabaseConnection("db_anagram", "Users", "Id", "email", true);
+    WordHelper.GetAndStoreList();
+    
 }

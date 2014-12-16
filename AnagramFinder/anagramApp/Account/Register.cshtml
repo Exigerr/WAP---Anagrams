@@ -16,7 +16,7 @@
         
         //Checks that all input is valid, else sets error messages
         if (validation.AllValid()) {
-            UserHelper user = new UserHelper();
+            CurrentUser user = new CurrentUser();
             if (user.CreateUser(Request["email"], Request["password"], Request["firstname"], Request["lastname"])) {
                 Response.Redirect("~");
             }
@@ -27,25 +27,23 @@
         else {
             validation.DisplayErrors(ModelState.AddError);   
         }
-        
     }
 }
-<section class="mediumBox centreBox">
+<section class="mediumBox centreBox" role=region>
     <h1 class="margin20">Create an account!</h1>
     <form method="post" action="" role="form" class="modernFields centreBox">
         <label for="firstname" class="hidden">Firstname:</label>
         @Html.ValidationMessage("firstname")
-        <input type="text" name="firstname" id="firstname" placeholder="Firstname: Fred" value="@Request["firstname"]" role="textbox" class="margin20" />
+        <input type="text" name="firstname" id="firstname" placeholder="Firstname: Fred" value="@Request["firstname"]" role="textbox" class="margin20" required aria-required="true" />
         <label for="lastname" class="hidden">Lastname</label>
         @Html.ValidationMessage("lastname")
-        <input type="text" name="lastname" id="lastname" placeholder="Lastname: Bloggs" value="@Request["lastname"]" role="textbox" class="margin20" />
-        <label for="Email" class="hidden">Your Email:</label>
+        <input type="text" name="lastname" id="lastname" placeholder="Lastname: Bloggs" value="@Request["lastname"]" role="textbox" class="margin20" required aria-required="true" />
+        <label for="email" class="hidden">Your Email:</label>
         @Html.ValidationMessage("email")
-        <input type="text" name="email" id="email" placeholder="Email: fredbloggs@amazingMail.com" value="@Request["email"]" role="textbox" class="margin20" />
+        <input type="email" name="email" id="email" placeholder="Email: fredbloggs@amazingMail.com" value="@Request["email"]" role="textbox" class="margin20" required aria-required="true" />
         <label for="password" class="hidden">Your Password:</label>
         @Html.ValidationMessage("password")
-        <input type="password" name="password" id="password" placeholder="Password: Password-+_123" value="" role="textbox" class="margin20" />
-        <label for="register" class="hidden">Register an account:</label>
+        <input type="password" name="password" id="password" placeholder="Password: Password-+_123" value="" role="textbox" class="margin20" required aria-required="true" />
         <input type="submit" name="register" id="register" value="Register" role="button" class="fullWidth">
     </form>
 </section>

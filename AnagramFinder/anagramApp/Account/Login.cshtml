@@ -14,7 +14,7 @@
         validation.AddField("password", "Password must be under 25 Characters and only contain letters,-,+,_, or numbers", valid.IsPassword(Request["password"], true));
         
         if (validation.AllValid()) {
-            UserHelper user = new UserHelper();
+            CurrentUser user = new CurrentUser();
             //Uses UserHelper instead of manually writing out WebSecurity.login. This allows extra logic to be done if necessary.
             if (user.Login(Request["email"], Request["password"])) {
                 Redirector redirector = new Redirector(Context);
@@ -22,6 +22,7 @@
             }
         }
         else {
+            ModelState.AddError("email", "Invalid Login Details");
             validation.DisplayErrors(ModelState.AddError);
         }
     }
@@ -37,16 +38,15 @@
         return msg;
     }
 }
-<section class="mediumBox centreBox margin20">
+<section class="mediumBox centreBox margin20" role=region>
     <h1 class="margin20">@getMsg()</h1>
     <form method="post" action="" role="form" class="modernFields">
         <label for="email" class="hidden">Your Email:</label>
         @Html.ValidationMessage("email")
-        <input type="text" name="email" id="email" placeholder="Email: e.g. fred@bloggs.com" value="" role="textbox" class="margin20" />
+        <input type="email" name="email" id="email" placeholder="Email: e.g. fred@bloggs.com" value="" role="textbox" class="margin20" required aria-required="true" />
         <label for="password" class="hidden">Your Password:</label>
         @Html.ValidationMessage("password")
-        <input type="password" name="password" id="password" placeholder="Password: e.g. Password123" value="" role="textbox" class="margin20" />
-        <label for="login" class="hidden">Log into FinderGram:</label>
+        <input type="password" name="password" id="password" placeholder="Password: e.g. Password123" value="" role="textbox" class="margin20" required aria-required="true" />
         <input type="submit" name="login" id="login" value="Login" role="button">
     </form>
 </section>

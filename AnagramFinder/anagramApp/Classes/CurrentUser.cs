@@ -7,8 +7,9 @@ using WebMatrix.Data;
 using WebMatrix.WebData;
 
 namespace anagramApp.Classes {
-    public class UserHelper 
+    public class CurrentUser
     {
+        private Database _db;
 
         public bool CreateUser(string email, string password, string userFirstname, string userLastname) {
             var user = new { firstname = userFirstname, lastname = userLastname };
@@ -28,13 +29,9 @@ namespace anagramApp.Classes {
 
         }
 
-        public void AddUserWord(Database db, string userSearch) {
-            //"INSERT INTO Anagrams (anagram) SELECT @param0 WHERE NOT EXISTS (SELECT anagram FROM Anagrams WHERE anagram=@param0)"
-            string getId = "SELECT Id FROM Anagrams WHERE anagram = @param0";
-            string updateQuery = "INSERT INTO UserSearches (userId, anagramId) SELECT @param0, @param1 WHERE NOT EXISTS (SELECT userId, anagramId FROM UserSearches WHERE userId = @param0 AND anagramId = @param1)";
-            var result = db.QueryValue(getId, userSearch);
-            int id = result.Id;
-            db.Execute(updateQuery, WebSecurity.CurrentUserId, id);
+        public void AddUserSearch(string userSearch) {
+            string updateQuery = "INSERT INTO UserSearches (userId, word, timestamp) VALUES (@param0, @param1, GETUTCDATE())";
+            _db.Execute(updateQuery, WebSecurity.CurrentUserId, userSearch);
         }
 
     }
