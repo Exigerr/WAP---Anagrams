@@ -12,7 +12,7 @@ h1, h2, h3, h4, h5, h6 {
     text-transform: capitalize;
 }
 
-p, a, form {
+p, a, form, ul {
     font-family: Tahoma, Geneva, sans-serif;
 }
 
@@ -257,7 +257,7 @@ main {
     color: #7f8c8d;
 }
 
-.modernFields.split input:-webkit-autofill {
+.modernFields input:-webkit-autofill {
     box-shadow: 0 0 0 50px #E5FFFA inset;
 }
 
@@ -266,9 +266,11 @@ main {
 /* -----------------------------------------------*/
 .wordList {
     list-style:square;
-    -moz-column-count:5;
-    -webkit-column-count:5;
-    column-count:5;
+    -moz-column-count:4;
+    -webkit-column-count:4;
+    column-count:4;
     list-style-position:inside;
-    font-size:1.5em;
+    font-size: 1.3em;
+    color: #3F494A;
+    text-transform:capitalize;
 }

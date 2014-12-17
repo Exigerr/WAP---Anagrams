@@ -8,6 +8,7 @@
     List<string> result = null;
 
     if (IsPost && !Request["anagramSearch"].IsEmpty()) {
+       
         CurrentUser user = new CurrentUser();
         Searcher wordSearch = new Searcher();
         
@@ -20,7 +21,7 @@
 }
 <section class="margin50" role="region">
     <h1 class="textCentre margin20">The Anagram Finder</h1>
-    <form method="post" action="" class="modernFields split" role="form">
+    <form method="post" action="." class="modernFields split" role="form">
         <label for="anagramSearch" class="hidden">Enter an Anagram:</label>
         <input type="search" name="anagramSearch" id="anagramSearch" placeholder="Enter Anagram Seach" value="@Request["anagramSearch"]" role="textbox" /><!--
         --><input type="submit" name="submit" id="search" value="Search" role="button" class="smallSubmit">

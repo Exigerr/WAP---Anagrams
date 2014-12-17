@@ -7,13 +7,13 @@ using System.Text.RegularExpressions;
 namespace anagramApp.Classes {
     public class Validators {
 
-        private string _emailRegEx = @"^([A-Za-z0-9\-\+\!\#\&\%\$\*\/\=\?\^_\{\|\}\`\~\''.]+)*@([A-Za-z0-9-]+)*(\.[A-Za-z]{2,4}){1,2}$";
+        private string _emailRegEx = @"^([A-Za-z0-9\-\+\!\#\&\%\$\*\/\=\?\^_\{\|\}\`\~\''.]+)*@([A-Za-z0-9-]+)*(\.[A-Za-z]{2,12}){1,2}$";
         private string _passwordRegex = @"^[A-Za-z0-9\-\+_]{1,25}$";
         private string _nameRegex = @"^[A-Za-z][A-Za-z\'\ ]{1,25}$";
 
         //Check that Input value is empty and not required, therefore no need to check other validation
         private bool EmptyAndRequired(string value, bool required) {
-            if (!NotEmpty(value) && required == false) {
+            if (String.IsNullOrEmpty(value) && required == false) {
                 return true;
             }
             return false;
@@ -36,13 +36,6 @@ namespace anagramApp.Classes {
                 return true;
             }
             return Regex.IsMatch(email, _emailRegEx);
-        }
-
-        public bool NotEmpty(string value){
-            if(value != "" || value != null){
-                return true;
-            }
-            return false;
         }
 
         public bool IsPassword(string pass, bool required = false) {

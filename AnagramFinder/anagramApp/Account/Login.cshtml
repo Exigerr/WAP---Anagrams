@@ -40,7 +40,7 @@
 }
 <section class="mediumBox centreBox margin20" role=region>
     <h1 class="margin20">@getMsg()</h1>
-    <form method="post" action="" role="form" class="modernFields">
+    <form method="post" action="Login" role="form" class="modernFields">
         <label for="email" class="hidden">Your Email:</label>
         @Html.ValidationMessage("email")
         <input type="email" name="email" id="email" placeholder="Email: e.g. fred@bloggs.com" value="@Request["email"]" role="textbox" class="margin20" required aria-required="true" />

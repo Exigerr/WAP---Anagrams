@@ -31,7 +31,7 @@
 }
 <section class="mediumBox centreBox" role=region>
     <h1 class="margin20">Create an account!</h1>
-    <form method="post" action="" role="form" class="modernFields centreBox">
+    <form method="post" action="Register" role="form" class="modernFields centreBox">
         <label for="firstname" class="hidden">Firstname:</label>
         @Html.ValidationMessage("firstname")
         <input type="text" name="firstname" id="firstname" placeholder="Firstname: Fred" value="@Request["firstname"]" role="textbox" class="margin20" required aria-required="true" />

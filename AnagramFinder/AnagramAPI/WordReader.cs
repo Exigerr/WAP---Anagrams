@@ -21,12 +21,17 @@ namespace AnagramAPI
                 string line;
 
                 while ((line = file.ReadLine()) != null) {
-                    string key = Alphabetise(line).ToLower();
+                    string key = Alphabetise(line.ToLower());
                     List<string> value;
 
                     //Check if key already exists
                     if (sortedList.TryGetValue(key, out value)) {
-                        value.Add(line);
+                        //Check if word already exists, if so do nothing
+                        //if(!value.Contains(line, StringComparer.OrdinalIgnoreCase)){
+                        //Faster LINQ Check
+                        if (!value.Any(str => str.Equals(line, StringComparison.OrdinalIgnoreCase))) {
+                            value.Add(line);
+                        }
                     }
                     else {
                         value = new List<string>();
