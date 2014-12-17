@@ -6,7 +6,7 @@
     }
     Page.Title = "Register an account";
 
-    if (IsPost) {
+    if (IsPost && General.ValidToken()) {
         Validate validation = new Validate();
         Validators valid = new Validators();
         validation.AddField("firstname", "A valid name is required", valid.IsName(Request["firstname"], true));
@@ -45,5 +45,6 @@
         @Html.ValidationMessage("password")
         <input type="password" name="password" id="password" placeholder="Password: Password-+_123" value="" role="textbox" class="margin20" required aria-required="true" />
         <input type="submit" name="register" id="register" value="Register" role="button" class="fullWidth">
+        @AntiForgery.GetHtml()
     </form>
 </section>

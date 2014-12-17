@@ -1,4 +1,19 @@
-﻿@helper UserMenu() {
+﻿
+@functions{
+    public static bool ValidToken(){
+        bool valid = false;
+            try{
+                AntiForgery.Validate();
+                valid = true;
+            }
+            catch(Exception ex){
+                valid = false;
+            }
+        return valid;
+    }
+}
+
+@helper UserMenu() {
     if (WebSecurity.IsAuthenticated) {
         <ul class="verticalCentreElem">
             <li>

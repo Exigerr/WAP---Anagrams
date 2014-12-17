@@ -7,7 +7,7 @@
     
     Page.Title = "Login to FinderGram";
 
-    if (IsPost) {
+    if (IsPost && General.ValidToken()) {
         Validate validation = new Validate();
         Validators valid = new Validators();
         validation.AddField("email", "A valid email address is required", valid.IsEmail(Request["email"], true));
@@ -48,6 +48,7 @@
         @Html.ValidationMessage("password")
         <input type="password" name="password" id="password" placeholder="Password: e.g. Password123" value="" role="textbox" class="margin20" required aria-required="true" />
         <input type="submit" name="login" id="login" value="Login" role="button">
+        @AntiForgery.GetHtml()
     </form>
 </section>
 <section class="mediumBox centreBox">

@@ -7,7 +7,7 @@
 
     List<string> result = null;
 
-    if (IsPost && !Request["anagramSearch"].IsEmpty()) {
+    if (IsPost && General.ValidToken() && !Request["anagramSearch"].IsEmpty()) {
        
         CurrentUser user = new CurrentUser();
         Searcher wordSearch = new Searcher();
@@ -25,6 +25,7 @@
         <label for="anagramSearch" class="hidden">Enter an Anagram:</label>
         <input type="search" name="anagramSearch" id="anagramSearch" placeholder="Enter Anagram Seach" value="@Request["anagramSearch"]" role="textbox" /><!--
         --><input type="submit" name="submit" id="search" value="Search" role="button" class="smallSubmit">
+        @AntiForgery.GetHtml()
     </form>
 </section>
 @{
